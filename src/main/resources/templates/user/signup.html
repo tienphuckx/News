@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="user/layout/layout :: layout(~{::title}, ~{::main})">
+
+<!-- Mirrored from blogzine.webestica.com/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Nov 2021 07:27:34 GMT -->
+
+<head>
+	<title>Báo tin tức nhiều người đọc nhất việt nam</title>
+
+</head>
+
+<body>
+
+	<!-- =======================
+Main hero START -->
+	<main>
+		<!-- =======================
+Inner intro START -->
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-lg-8 col-xl-6 mx-auto">
+						<div class="bg-primary-soft rounded p-4 p-sm-5">
+							<h2>Đăng ký tài khoản </h2>
+							<!-- Form START -->
+							<form class="mt-4" action="#" th:action="@{/signup}" th:object="${user}" method="post">
+								<!-- Email -->
+								<div class="mb-3">
+									<label class="form-label" for="exampleInputEmail1">Username</label>
+									<input th:field="*{username}" type="text" class="form-control" id="exampleInputEmail1"
+										aria-describedby="emailHelp" placeholder="E-mail">
+									<small id="emailHelp" class="form-text">We'll never share your username with anyone
+										else.</small>
+								</div>
+								<!-- Password -->
+								<div class="mb-3">
+									<label class="form-label" for="exampleInputPassword1">Mật khẩu</label>
+									<input th:field="*{password}" type="password" class="form-control" id="exampleInputPassword1"
+										placeholder="*********">
+								</div>
+								<!-- Password -->
+								<div class="mb-3">
+									<label class="form-label" for="exampleInputPassword2">Xác nhận mật khẩu</label>
+									<input th:field="*{confirmPassword}" type="password" class="form-control" id="exampleInputPassword2"
+										placeholder="*********">
+								</div>
+								<!-- Checkbox -->
+								<span class="text-danger" th:text="${errorMessage}"></span>
+								<!-- Button -->
+								<div class="row align-items-center">
+									<div class="col-sm-4">
+										<button type="submit" class="btn btn-success">Đăng ký</button>
+									</div>
+									<div class="col-sm-8 text-sm-end">
+										<span>Bạn đã có tài khoản? <a href="/signin"><u>Đăng nhập</u></a></span>
+									</div>
+								</div>
+							</form>
+							<!-- Form END -->
+							<hr>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- =======================
+Inner intro END -->
+	</main>
+
+
+	<!-- =======================
+Cards END -->
+</body>
+
+<!-- Mirrored from blogzine.webestica.com/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Nov 2021 07:27:35 GMT -->
+
+</html>

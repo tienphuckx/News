@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(title, content)">
+
+<!-- Mirrored from blogzine.webestica.com/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Nov 2021 07:27:34 GMT -->
+
+<head>
+	<title th:replace="${title}">Báo tin tức nhiều người đọc nhất việt nam</title>
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Webestica.com">
+	<meta name="description" content="Bootstrap based News, Magazine and Blog Theme">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" th:href="@{/user/assets/images/favicon.ico}">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&amp;family=Rubik:wght@400;500;700&amp;display=swap"
+		rel="stylesheet">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/user/assets/vendor/font-awesome/css/all.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/user/assets/vendor/bootstrap-icons/bootstrap-icons.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/user/assets/vendor/tiny-slider/tiny-slider.css}">
+
+	<!-- Theme CSS -->
+	<link id="style-switch" rel="stylesheet" type="text/css" th:href="@{/user/assets/css/style.css}">
+
+</head>
+
+<body>
+
+	<!-- =======================
+Header START -->
+	<header class="navbar-light navbar-sticky header-static">
+		<!-- Logo Nav START -->
+		<nav class="navbar navbar-expand-lg">
+			<div class="container">
+				<!-- Logo START -->
+				<a class="navbar-brand" href="/">
+					<img class="navbar-brand-item light-mode-item" th:src="@{/user/assets/images/logo.svg}" alt="logo">
+					<img class="navbar-brand-item dark-mode-item" th:src="@{/user/assets/images/logo-light.svg}"
+						alt="logo">
+				</a>
+				<!-- Logo END -->
+
+				<!-- Responsive navbar toggler -->
+				<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="text-body h6 d-none d-sm-inline-block">Menu</span>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<!-- Main navbar START -->
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<ul class="navbar-nav navbar-nav-scroll mx-auto">
+						<li class="nav-item"> <a class="nav-link" href="/">Trang chủ</a></li>
+						<!-- Nav item 1 Demos -->
+						<!--<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle active" href="#" id="homeMenu" data-bs-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">Trang chủ</a>
+							<ul class="dropdown-menu" aria-labelledby="homeMenu">
+								<li> <a class="dropdown-item" href="index-2.html">Home default</a></li>
+								<li> <a class="dropdown-item" href="index-lazy.html">Home lazy load</a></li>
+								<li> <a class="dropdown-item" href="index-3.html">Magazine classic</a></li>
+								<li> <a class="dropdown-item" href="index-4.html">Magazine</a></li>
+								<li> <a class="dropdown-item active" href="index-5.html">Home cards</a></li>
+								<li> <a class="dropdown-item" href="index-6.html">Blog classic</a></li>
+							</ul>
+						</li>-->
+
+
+
+						<!-- Nav item 3 Post -->
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">Thể loại</a>
+							<ul class="dropdown-menu" aria-labelledby="postMenu">
+
+								<li th:each="category: ${categoriesMenu}"> <a class="dropdown-item"
+										th:href="@{/blogs/{categoryId}(categoryId=${category.id})}"
+										th:text="${category.categoryName}"></a> </li>
+							</ul>
+						</li>
+						<li class="nav-item" th:if="${session.userLoginPage == null}"> <a class="nav-link" href="/signup">Đăng ký</a></li>
+						<li class="nav-item" th:if="${session.userLoginPage == null}"> <a class="nav-link" href="/signin">Đăng nhập</a></li>
+						<li class="nav-item" th:if="${session.userLoginPage != null}"> <a class="nav-link" href="/signout">Đăng xuất</a></li>
+						<!-- Nav item 5 link-->
+						<!--<li class="nav-item"> <a class="nav-link" href="docs/alerts.html">Components</a></li>-->
+					</ul>
+				</div>
+				<!-- Main navbar END -->
+
+			</div>
+		</nav>
+		<!-- Logo Nav END -->
+	</header>
+	<!-- =======================
+Header END -->
+
+	<!-- **************** MAIN CONTENT START **************** -->
+	<main th:replace="${content}">
+	</main>
+	<!-- **************** MAIN CONTENT END **************** -->
+
+	<!-- =======================
+Footer START -->
+	<footer class="pb-5">
+		<div class="container">
+			<div class="row pt-5">
+				<div class="col-lg-7 mx-auto text-center">
+					<!-- Logo -->
+					<img class="light-mode-item mx-auto" th:src="@{/user/assets/images/logo.svg}" alt="logo">
+					<img class="dark-mode-item mx-auto" th:src="@{/user/assets/images/logo-light.svg}" alt="logo">
+					<p class="mt-3">The next-generation blog, news, and magazine theme for you to start sharing your
+						stories today! This Bootstrap 5 based theme is ideal for all types of sites that deliver the
+						news.</p>
+					<!-- Links -->
+					<ul class="nav text-center text-sm-end justify-content-center justify-content-center mt-3 mt-md-0">
+						<li class="nav-item"><a class="nav-link" href="#">About</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Terms</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Career<span class="badge bg-danger ms-2">2
+									Job</span></a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Contact us</a></li>
+						<li class="nav-item"><a class="nav-link pe-0" href="#">Cookies</a></li>
+					</ul>
+					<div class="mt-2">©2021 <a href="https://www.webestica.com/" class="text-reset btn-link"
+							target="_blank">Webestica</a>. All rights reserved </div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- =======================
+Footer END -->
+
+	<!-- Back to top -->
+	<div class="back-top"><i class="bi bi-arrow-up-short"></i></div>
+
+	<!-- =======================
+JS libraries, plugins and custom scripts -->
+
+	<!-- Bootstrap JS -->
+	<script th:src="@{/user/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js}"></script>
+
+	<!-- Vendors -->
+	<script th:src="@{/user/assets/vendor/tiny-slider/tiny-slider.js}"></script>
+	<script th:src="@{/user/assets/vendor/jarallax/jarallax.min.js}"></script>
+	<script th:src="@{/user/assets/vendor/jarallax/jarallax-video.min.js}"></script>
+
+	<!-- Template Functions -->
+	<script th:src="@{/user/assets/js/functions.js}"></script>
+
+</body>
+
+<!-- Mirrored from blogzine.webestica.com/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Nov 2021 07:27:35 GMT -->
+
+</html>

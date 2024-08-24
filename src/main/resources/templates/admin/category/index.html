@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/layout/layout :: layout(~{::title}, ~{::section})">
+
+<head>
+	<title>Thể Loại</title>
+</head>
+
+<body>
+	<section>
+		<div class="container-fluid">
+			<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="/category">Category</a>
+				</li>
+				<li class="breadcrumb-item active">Danh sách</li>
+			</ol>
+
+			<!-- Page Content -->
+			<div class="card mb-3">
+				<div class="card-header">
+					<a class="btn btn-primary text-end" href="/category/add"><i class="fas fa-plus"></i> Thêm mới</a>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Image</th>
+									<th>Tên Thể Loại</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<th>No</th>
+									<th>Image</th>
+									<th>Tên Thể Loại</th>
+									<th></th>
+								</tr>
+							</tfoot>
+							<tbody>
+								<tr th:each="category : ${categories}">
+									<td th:text="${category.id}"></td>
+									<td><image class="img-thumbnail" width="100" th:src="@{/files/{image}(image=${category.image})}"></td>
+									<td th:text="${category.categoryName}"></td>
+									<td>
+										<a th:href="@{/category/edit/{id}(id=${category.id})}" ><i class="fas fa-user-edit ml-2"></i></a>
+										<a th:href="@{/category/delete/{id}(id=${category.id})}" ><i class="fas fa-user-times ml-2"></i></a>
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+<!--				<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>-->
+			</div>
+		</div>
+	</section>
+
+</body>
+
+</html>

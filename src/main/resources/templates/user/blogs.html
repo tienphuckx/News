@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="user/layout/layout :: layout(~{::title}, ~{::main})">
+
+<!-- Mirrored from blogzine.webestica.com/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Nov 2021 07:27:34 GMT -->
+
+<head>
+	<title>Báo tin tức nhiều người đọc nhất việt nam</title>
+
+</head>
+
+<body>
+
+	<!-- =======================
+Main hero START -->
+	<main>
+		<!-- =======================
+Inner intro START -->
+		<section class="pt-4">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="bg-success-soft text-center rounded-3 p-4">
+							<h1 class="text-success" th:text="${category.categoryName}">Danh sách bài viết</h1>
+							<nav class="d-flex justify-content-center" aria-label="breadcrumb">
+								<ol class="breadcrumb breadcrumb-dots mb-0">
+									<li class="breadcrumb-item"><a href="/"><i class="bi bi-house me-1"></i>
+											Trang chủ</a></li>
+									<li class="breadcrumb-item active">Danh sách bài viết</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- =======================
+Inner intro END -->
+
+		<!-- =======================
+Main content START -->
+		<section class="position-relative pt-0">
+			<div class="container">
+				<div class="row">
+					<!-- Card item START -->
+					<div class="col-sm-6 col-lg-3" th:each="post : ${posts}">
+						<div class="card mb-4">
+							<!-- Card img -->
+							<div class="card-fold position-relative">
+								<img class="card-img" th:src="@{/files/{image}(image=${post.image})}" alt="Card image">
+							</div>
+							<div class="card-body px-0 pt-3">
+								<h4 class="card-title"><a th:href="@{/blogs/detail/{id}(id=${post.id})}"
+										class="btn-link text-reset stretched-link fw-bold" th:text="${post.title}"></a></h4>
+								<!-- Card info -->
+								<ul class="nav nav-divider align-items-center text-uppercase small">
+									
+									<li class="nav-item" th:text="${#dates.format(post.createdDate, 'MMM dd, yyyy')}"></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- Card item END -->
+					
+				</div> <!-- Row end -->
+
+				<!-- Pagination START -->
+				
+				<!-- Pagination END -->
+			</div>
+		</section>
+		<!-- =======================
+Main content END -->
+	</main>
+
+
+	<!-- =======================
+Cards END -->
+</body>
+
+<!-- Mirrored from blogzine.webestica.com/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Nov 2021 07:27:35 GMT -->
+
+</html>
